@@ -11,7 +11,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 @RestController
-@RequestMapping("123/")
+@RequestMapping("api/")
 public class UserController {
 
     private static List<User> addedUsers = new LinkedList<>();
