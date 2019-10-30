@@ -12,7 +12,7 @@ class GamePage extends React.Component {
   render() {
     return (
         <div className='game-body'>
-          <Button><Link to='/home'>Home</Link></Button>
+          <Link to='/home'><Button>Home</Button></Link>
           <FilterableProductTable products={PRODUCTS} />,
           <hr/>,
           <WelcomeDialog />,

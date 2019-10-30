@@ -171,7 +171,7 @@ class LoginOrRegisterForm extends React.Component {
         
       </Form>
         
-      <Button><Link to='/home'>home</Link> </Button>
+      <Link to='/home'><Button>home</Button></Link>
       <hr />
         </div>
     );

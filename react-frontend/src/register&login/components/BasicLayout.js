@@ -10,9 +10,9 @@ class BasicLayout extends React.Component {
       <div>
         <h1>BasicLayout123</h1>
         <BlogTableCtn />
-        <Button><Link to='/login'>login</Link> </Button>
-        <Button><Link to='/register'>register</Link> </Button>
-        <Button><Link to='/game'>Games</Link></Button>
+        <Link to='/login'><Button>login</Button></Link> 
+        <Link to='/register'><Button>register</Button></Link> 
+        <Link to='/game'><Button>Games</Button></Link>
       </div>
     );
   }
