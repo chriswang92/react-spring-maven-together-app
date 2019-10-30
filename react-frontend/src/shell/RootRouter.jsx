@@ -5,17 +5,20 @@ import {ConfigProvider} from 'antd';
 import enUS from 'antd/lib/locale-provider/en_US';
 import routerConfig from './common/pageRouter';
 import NotFound from './routes/Exception/404';
+import { createHashHistory } from 'history';
+
 
 function RootRouter({store}) {
   const LoginLayout = routerConfig['/login'].component;
   const BasicLayout = routerConfig['/home'].component;
   const RegisterPage = routerConfig['/register'].component;
   const GamePage = routerConfig['/game'].component;
-  
+  const history = createHashHistory();
+  console.log('history=',history);
   return (
     <Provider store={store}>
       <ConfigProvider locale={enUS}>
-        <BrowserRouter>
+        <BrowserRouter history={history}>
           <Switch>
             <Route exact path="/login" component={LoginLayout} />
             <Route exact path="/register" component={RegisterPage} />
