@@ -1,6 +1,6 @@
 import React from 'react';
 import {Provider} from 'react-redux';
-import {Route, Switch, BrowserRouter} from 'react-router-dom';
+import {Route, Switch, BrowserRouter, HashRouter} from 'react-router-dom';
 import {ConfigProvider} from 'antd';
 import enUS from 'antd/lib/locale-provider/en_US';
 import routerConfig from './common/pageRouter';
@@ -18,7 +18,7 @@ function RootRouter({store}) {
   return (
     <Provider store={store}>
       <ConfigProvider locale={enUS}>
-        <BrowserRouter history={history}>
+        <HashRouter history={history}>
           <Switch>
             <Route exact path="/login" component={LoginLayout} />
             <Route exact path="/register" component={RegisterPage} />
@@ -26,7 +26,7 @@ function RootRouter({store}) {
             <Route exact path={["/home", "/"]} component={BasicLayout} />
             <Route path="*" component={NotFound} />
           </Switch>
-        </BrowserRouter>
+        </HashRouter>
       </ConfigProvider>
     </Provider>
   );
