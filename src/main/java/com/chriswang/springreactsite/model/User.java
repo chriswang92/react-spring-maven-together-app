@@ -1,22 +1,30 @@
-package mySite4fun.chriswang.springreactblog.model;
+package com.chriswang.springreactsite.model;
 
-//import javax.persistence.Entity;
-//import javax.persistence.GeneratedValue;
-//import javax.persistence.Id;
 
-//@Entity
+import javax.persistence.*;
+
+@Entity
+@Table(name="Users")
 public class User {
 
-//    private @Id @GeneratedValue int id;
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO) private Long id;
     private String username;
     private String password;
 
-    public int getId() {
+    public User() {
+
+    }
+
+    public User(String username) {
+        this.username = username;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
     public String getUsername() {

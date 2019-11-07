@@ -1,6 +1,6 @@
-package mySite4fun.chriswang.springreactblog.utils;
+package com.chriswang.springreactsite.utils;
 
-import mySite4fun.chriswang.springreactblog.model.User;
+import com.chriswang.springreactsite.model.User;
 import org.json.JSONObject;
 
 public class Utilities {

@@ -1,6 +1,6 @@
-package mySite4fun.chriswang.springreactblog.controller;
+package com.chriswang.springreactsite.controller;
 
-import mySite4fun.chriswang.springreactblog.model.Message;
+import com.chriswang.springreactsite.model.Message;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;

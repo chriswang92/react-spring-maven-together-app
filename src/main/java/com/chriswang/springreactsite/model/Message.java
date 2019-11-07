@@ -1,4 +1,4 @@
-package mySite4fun.chriswang.springreactblog.model;
+package com.chriswang.springreactsite.model;
 
 
 public class Message {
