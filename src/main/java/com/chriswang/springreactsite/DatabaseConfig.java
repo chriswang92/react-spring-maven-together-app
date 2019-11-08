@@ -21,9 +21,11 @@ public class DatabaseConfig {
         basicDataSource.setUrl(dbUrl);
         basicDataSource.setUsername(username);
         basicDataSource.setPassword(password);
+        basicDataSource.setDriverClassName("org.postgresql.Driver");
 
         return basicDataSource;
     }
+}
 //    @Bean
 //    public BasicDataSource dataSource() throws URISyntaxException {
 //        String dbUrl = System.getenv("JDBC_DATABASE_URL");
@@ -35,7 +37,6 @@ public class DatabaseConfig {
 //        basicDataSource.setPassword(password);
 //        return basicDataSource;
 //    }
-}
 
 
 //    @Value("${spring.datasource.url}")
