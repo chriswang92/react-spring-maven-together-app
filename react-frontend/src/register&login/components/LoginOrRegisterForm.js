@@ -11,55 +11,35 @@ const FormItem = Form.Item;
 class LoginOrRegisterForm extends React.Component {
   constructor(props) {
     super(props);
-    this.setState({
-      registeredUsers: null,
-      isLogin: this.props.isLogin
-    });
-    this.props.getAllUsers();
-    // this.props.isLogin = this.props.isLogin;
-    // console.log('in loginregform constructor, this.props.registeredUse=',this.props.registeredUsers);
-    console.log(
-      'in loginregform constructor, this.props.users=',
-      this.props.users
-    );
-
-    this.loginSuccess = false;
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.setLoginSuccess = this.setLoginSuccess.bind(this);
-    this.updateAllUserList = this.updateAllUserList.bind(this);
-  }
-  updateAllUserList = () => {
-    //Update all_users list
-    if (!this.props.isLogin) {
-      console.log('before getAllUsers, users=', this.registeredUsers);
-      this.setState({
-        registeredUsers: !this.props.isLogin ? this.props.getAllUsers() : null //this.props.isLogin? this.props.registeredUsers : null;
-      });
-      console.log(
-        'after getAllUsers, users=',
-        this.registeredUsers,
-        'state=',
-        this.state
-      );
+    const { isLogin, users, getAllUsers } = this.props;
+    if (!isLogin) {
+      getAllUsers();
     }
-  };
+    console.log('in loginregform constructor, this.props.users=', users);
+
+    this.state = { loginSuccess: false };
+    // this.handleSubmit = this.handleSubmit.bind(this);
+  }
   handleRegister = e => {
-    this.props.form.validateFields((err, values) => {
+    const { form, users, registerUser } = this.props;
+    form.validateFields((err, values) => {
       if (err) {
         console.log('handleRegister has err: ', err);
         return;
       }
-      if (this.props.users.find(u => u.username === values.username)) {
+      console.log('in handleRegister/this.props.users=', this.props.users);
+      if (users.find(u => u.username === values.username)) {
         console.log('username already exist!');
         return;
       }
       console.log('handleRegister success, Received values of form: ', values);
-      this.props.registerUser(values);
-      this.props.getAllUsers();
+      registerUser(values);
     });
   };
+
   checkUser = (uname, pwd) => {
-    for (var u of this.registeredUsers) {
+    const { users } = this.props;
+    for (var u of users) {
       if (u.username === uname && u.password === pwd) {
         return true;
       }
@@ -70,15 +50,16 @@ class LoginOrRegisterForm extends React.Component {
     return false;
   };
   handleLogin = e => {
+    const { users, form } = this.props;
     console.log(
       'in handleSubmit, saw a login submit, do handleLogin..|this.registeredUsers=',
-      this.registeredUsers
+      users
     );
-    if (!this.registeredUsers || this.registeredUsers.length === 0) {
-      console.log('No registeredUser exists, users=', this.registeredUsers);
+    if (!users || users.length === 0) {
+      console.log('No registeredUser exists, users=', users);
       return false;
     }
-    this.props.form.validateFields((err, values) => {
+    form.validateFields((err, values) => {
       if (err) {
         console.log('handleLogin has err: ', err);
       }
@@ -107,18 +88,19 @@ class LoginOrRegisterForm extends React.Component {
       }
     });
   };
-  setLoginSuccess = () => {
-    this.loginSuccess = true; //this.handleLogin(e);
-  };
+
   handleSubmit = e => {
     e.preventDefault();
-    if (this.props.isLogin) {
-      console.log('before handleLogin, loginSuccess=', this.loginSuccess);
-      // this.loginSuccess = true;//this.handleLogin(e);
-      this.setLoginSuccess();
-      console.log('after handleLogin, loginSuccess=', this.loginSuccess);
+    const { isLogin, getAllUsers } = this.props;
+    if (isLogin) {
+      console.log('before handleLogin, loginSuccess=', this.state.loginSuccess);
+      this.setState({
+        loginSuccess: true
+      });
+      console.log('after handleLogin, loginSuccess=', this.state.loginSuccess);
     } else {
       this.handleRegister(e);
+      getAllUsers();
     }
   };
 
@@ -126,8 +108,6 @@ class LoginOrRegisterForm extends React.Component {
     if (!val) {
       callback();
     }
-    console.log('username = ', val);
-    console.log('username = ', val.length);
     let validateResult = val.length >= 8; //&& val.length < 10;
     // console.log('username = ',validateResult);
     if (!validateResult) {
@@ -140,16 +120,8 @@ class LoginOrRegisterForm extends React.Component {
   };
 
   render() {
-    const isLogin = this.props.isLogin;
-    //Update all_users list
-    // this.updateAllUserList();
+    const { isLogin } = this.props;
     const { getFieldDecorator } = this.props.form;
-    console.log(
-      'rendering LoginOrRegisterForm, isLogin=',
-      isLogin,
-      'loginSuccess=',
-      this.loginSuccess
-    );
     return (
       <div>
         <Form className='login-form' onSubmit={this.handleSubmit}>

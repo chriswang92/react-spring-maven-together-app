@@ -3,10 +3,8 @@ import { post, get } from '../../utils/sagaUtils/restActions';
 export const REGISTER_USER = `@@CHRISWANG/${APPNAME}/REGISTER_USER`;
 export const LOGIN_USER = `@@CHRISWANG/${APPNAME}/LOGIN_USER`;
 export const GET_ALL_USERS = `@@CHRISWANG/${APPNAME}/GET_ALL_USERS`;
-// let userId = 0;
 
 export const getAllUsers = () =>
-  // console.log('called apis/getAllUsers()...');
   get(`/api/users`, {
     success: allUsers => ({
       type: GET_ALL_USERS,
@@ -14,15 +12,7 @@ export const getAllUsers = () =>
     })
   });
 
-// ({
-//   type: GET_ALL_USERS,
-//   payload: {
-//     userInfo
-//   }
-// })
-
 export const registerUser = (
-  // sessionId,
   apiData
 ) =>
   post(
