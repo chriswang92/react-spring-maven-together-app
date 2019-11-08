@@ -41,15 +41,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "user", method = RequestMethod.POST)
-    public String addUser(@RequestBody User user) {
-//        System.out.println("The user added is: "+user+"\n username = " + user.getUsername() + "\n password = " + user.getPassword());
-//        user.setId(++userId);
-//        JSONObject response = Utilities.createJSONObject(user);
-//        if (response != null) {
-//            addedUsers.add(user);
-//        }
-        String response = userService.addUser(user);
-        System.out.println("Add user response="+response);
-        return response;
+    public User addUser(@RequestBody User user) {
+        return userService.addUser(user);
     }
 }

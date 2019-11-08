@@ -91,7 +91,7 @@ class LoginOrRegisterForm extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    const { isLogin, getAllUsers } = this.props;
+    const { isLogin } = this.props;
     if (isLogin) {
       console.log('before handleLogin, loginSuccess=', this.state.loginSuccess);
       this.setState({
@@ -100,7 +100,6 @@ class LoginOrRegisterForm extends React.Component {
       console.log('after handleLogin, loginSuccess=', this.state.loginSuccess);
     } else {
       this.handleRegister(e);
-      getAllUsers();
     }
   };
 

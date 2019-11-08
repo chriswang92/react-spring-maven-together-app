@@ -17,10 +17,9 @@ public class UserService {
     public Iterable<User> findAll() {
         return userRepository.findAll();
     }
-    public String addUser(User user) {
+    public User addUser(User user) {
         try {
-            userRepository.save(user);
-            return user.getUsername() + "," + user.getPassword();
+            return userRepository.save(user);
         } catch (Exception e) {
             return null;
         }
