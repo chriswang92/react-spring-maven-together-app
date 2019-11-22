@@ -6,7 +6,7 @@ import RegisterFormCtn from '../containers/RegisterFormCtn';
 class MainLayout extends React.Component {
   render() {
     return (
-      <div>
+      <div id='mainlayout'>
         <RegisterFormCtn />
         <UserList />
       </div>
