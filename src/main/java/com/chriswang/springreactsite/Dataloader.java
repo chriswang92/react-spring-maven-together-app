@@ -12,6 +12,9 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
+/**
+ * @author CWang
+ */
 @Component
 public class Dataloader implements ApplicationRunner {
 
@@ -24,13 +27,9 @@ public class Dataloader implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        for (int i=0;i<1;i++) {
+        for (int i=0;i<3;i++) {
             bookRepository.save(new Book("AutoLoadedBook - "+ RandomStringUtils.randomAlphabetic(10)));
-        }
-        for (int i=0;i<1;i++) {
             userRepository.save(new User("AutoLoadedUser - "+ RandomStringUtils.randomAlphabetic(10)));
-        }
-        for (int i=0;i<1;i++) {
             blogRepository.save(new Blog("AutoLoadedBlog - "+ RandomStringUtils.randomAlphabetic(10),
                     "AutoLoadedBlogContent - "+ RandomStringUtils.randomAlphabetic(30)));
         }
