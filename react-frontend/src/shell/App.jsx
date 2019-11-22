@@ -1,14 +1,26 @@
 import React from 'react';
-import configureStore from '../register&login/store';
+import configureStore from '../utils/store';
 import Immutable from 'immutable';
-import { USER_STATE } from '../config/constants';
+import { USER_STATE, BLOG_STATE } from '../config/constants';
 import RootRouter from './RootRouter';
 
-const initialState = {
-  users: [{ id: 0, username: 'chriswang', password: 'abc12345' }]
-};
+const userInitialState = Immutable.Map({
+  users: [Immutable.Map({ id: 0, username: 'chriswang', password: 'abc12345' })]
+});
 
-const persistedState = { [USER_STATE]: initialState };
+const blogInitialState = Immutable.Map({
+  blogs: [
+    Immutable.Map({
+      id: 0,
+      name: 'first blog',
+      content: 'first blog content'
+    })
+  ]
+});
+const persistedState = Immutable.Map({
+  [USER_STATE]: userInitialState,
+  [BLOG_STATE]: blogInitialState
+});
 
 class App extends React.Component {
   constructor(props) {
@@ -25,7 +37,8 @@ class App extends React.Component {
   }
   render() {
     // return <p>RootRouter</p>;
-    console.log('rendering App with store=', this.store);
+    // console.log('rendering App with store=', this.store);
+    console.log(this.state);
     return <RootRouter store={this.store} />;
   }
 }

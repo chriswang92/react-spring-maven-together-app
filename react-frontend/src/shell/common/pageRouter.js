@@ -8,7 +8,7 @@ const routerConfig = {
   },
   '/home': {
     component: LoadableCpnt({
-      loader: () => import('../../register&login/containers/BasicLayoutCtn')
+      loader: () => import('../../home/containers/BasicLayoutCtn')
     })
   },
   '/register': {
@@ -19,6 +19,11 @@ const routerConfig = {
   '/game': {
     component: LoadableCpnt({
       loader: () => import('../../game-tictactoe/GamePage')
+    })
+  },
+  '/blog': {
+    component: LoadableCpnt({
+      loader: () => import('../../blog/containers/BlogManagePageCtn')
     })
   }
 };

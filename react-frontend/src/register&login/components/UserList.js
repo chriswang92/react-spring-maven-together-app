@@ -2,7 +2,7 @@ import React from 'react';
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
 import 'antd/dist/antd.css';
 
-class Content extends React.Component {
+class UserList extends React.Component {
   render() {
     // const {getFieldDecorator} = this.props.form;
     const { users } = this.props;
@@ -20,4 +20,4 @@ class Content extends React.Component {
   }
 }
 // export default Form.create({})(LoginForm);
-export default Content;
+export default UserList;

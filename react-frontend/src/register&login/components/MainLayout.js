@@ -1,15 +1,14 @@
-
 import React from 'react';
 import LoginFormCtn from '../containers/LoginFormCtn';
-import ContentCtn from '../containers/ContentCtn';
+import UserList from '../containers/UserListCtn';
 import RegisterFormCtn from '../containers/RegisterFormCtn';
 
 class MainLayout extends React.Component {
   render() {
-    return(
+    return (
       <div>
-        <RegisterFormCtn/>
-        <ContentCtn />
+        <RegisterFormCtn />
+        <UserList />
       </div>
     );
   }

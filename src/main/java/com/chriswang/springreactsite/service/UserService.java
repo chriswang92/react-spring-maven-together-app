@@ -12,16 +12,16 @@ import org.springframework.stereotype.Component;
 public class UserService {
 
     @Autowired
-    private UserRepository userRepository;
+    private UserRepository repository;
     
     public Iterable<User> findAll() {
-        return userRepository.findAll();
+        return repository.findAll();
     }
-    public User addUser(User user) {
+    public User add(User user) throws Exception {
         try {
-            return userRepository.save(user);
+            return repository.save(user);
         } catch (Exception e) {
-            return null;
+            throw new Exception(e);
         }
     }
 }

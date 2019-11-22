@@ -2,15 +2,8 @@ package com.chriswang.springreactsite.controller;
 
 import com.chriswang.springreactsite.model.User;
 import com.chriswang.springreactsite.service.UserService;
-import com.chriswang.springreactsite.utils.Utilities;
-import org.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import org.json.JSONObject;
-
-import java.util.LinkedList;
-import java.util.List;
 
 @RestController
 @RequestMapping("api/")
@@ -35,13 +28,13 @@ public class UserController {
 //        return jsonArray.toString();
 //    }
 
-    @RequestMapping(value = "users", method = RequestMethod.GET)
+    @RequestMapping(value = "user", method = RequestMethod.GET)
     public Iterable<User> getAllUsers() {
         return userService.findAll();
     }
 
     @RequestMapping(value = "user", method = RequestMethod.POST)
-    public User addUser(@RequestBody User user) {
-        return userService.addUser(user);
+    public User addUser(@RequestBody User user) throws Exception {
+        return userService.add(user);
     }
 }

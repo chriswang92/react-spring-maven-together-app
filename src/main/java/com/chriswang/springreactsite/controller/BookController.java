@@ -17,10 +17,10 @@ public class BookController {
 
     @RequestMapping(value = "books", method = RequestMethod.GET)
     public Iterable<Book> getAllBooks() {
-        return bookService.getAllBooks();
+        return bookService.getAll();
     }
     @RequestMapping(value = "book", method = RequestMethod.POST)
-    public void addBook() {
-        bookService.addBook(new Book("Book"+ RandomStringUtils.randomAlphabetic(10)));
+    public void addBook() throws Exception {
+        bookService.add(new Book("Book"+ RandomStringUtils.randomAlphabetic(10)));
     }
 }
