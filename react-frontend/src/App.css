@@ -1,5 +1,12 @@
-.App {
+App {
   text-align: center;
+  margin: 70px;
+  background-color: blue;
+}
+
+Shell{
+  text-align: center;
+
 }
 
 .App-logo {

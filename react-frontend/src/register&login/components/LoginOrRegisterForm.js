@@ -4,6 +4,7 @@ import 'antd/dist/antd.css';
 import { Redirect } from 'react-router-dom';
 import ContentCtn from '../containers/ContentCtn';
 import { Link } from 'react-router-dom';
+import '../index.css';
 
 const Password = Input.Password;
 const FormItem = Form.Item;
@@ -122,7 +123,7 @@ class LoginOrRegisterForm extends React.Component {
     const { isLogin } = this.props;
     const { getFieldDecorator } = this.props.form;
     return (
-      <div>
+      <div id='form'>
         <Form className='login-form' onSubmit={this.handleSubmit}>
           <FormItem>
             {getFieldDecorator('username', {

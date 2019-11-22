@@ -1,6 +1,7 @@
 import React from 'react';
 import Shell from './shell';
 import LoginPage from './register&login/containers/LoginFormCtn';
+import './App.css';
 
 class App extends React.Component {
   render() {

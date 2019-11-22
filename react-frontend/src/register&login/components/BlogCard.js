@@ -4,7 +4,7 @@ class BlogCard extends React.Component {
   render() {
 
     return (
-      <div>
+      <div id='blogcard'>
         <h2>This is a Blog card</h2>
       </div>
     );
