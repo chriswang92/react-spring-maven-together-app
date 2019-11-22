@@ -24,14 +24,15 @@ public class Dataloader implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        for (int i=0;i<5;i++) {
+        for (int i=0;i<1;i++) {
             bookRepository.save(new Book("AutoLoadedBook - "+ RandomStringUtils.randomAlphabetic(10)));
         }
-        for (int ii=0;ii<5;ii++) {
+        for (int i=0;i<1;i++) {
             userRepository.save(new User("AutoLoadedUser - "+ RandomStringUtils.randomAlphabetic(10)));
         }
-        for (int ii=0;ii<5;ii++) {
-            blogRepository.save(new Blog("AutoLoadedBlog - "+ RandomStringUtils.randomAlphabetic(10)));
+        for (int i=0;i<1;i++) {
+            blogRepository.save(new Blog("AutoLoadedBlog - "+ RandomStringUtils.randomAlphabetic(10),
+                    "AutoLoadedBlogContent - "+ RandomStringUtils.randomAlphabetic(30)));
         }
     }
 }

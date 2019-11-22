@@ -9,7 +9,7 @@ import { USER_STATE } from '../../config/constants';
 import Immutable from 'immutable';
 
 export default function userReducer(state = Immutable.Map(), action) {
-  // const state = rootState.get([USER_STATE]);
+  let newState = state;
   switch (action.type) {
     case REGISTER_USER:
       console.log(
@@ -18,20 +18,19 @@ export default function userReducer(state = Immutable.Map(), action) {
         ', action=',
         action
       );
-      const newUser = action.payload.newRecord;
-      const immuData = Immutable.Map({
+      const users = state
+        .get('users') //Immutable.List.push(another immutable object), since the elements in the list are all immutable
+        .push(Immutable.fromJS(action.payload.res));
+
+      newState = Immutable.fromJS({
         ...state,
-        users:
-          // state.get('users').set(newUser.id, newUser)
-          state.get('users').concat({
-            id: action.payload.newRecord.id,
-            username: action.payload.newRecord.username,
-            password: action.payload.newRecord.password
-          })
+        users //: state.get('blogs').concat(action.payload.res)
       });
+      console.log('newState =', newState);
       // return state.withMutations(mutableState =>
       //     mutableState.set(immuData));
-      return immuData;
+      // return newState;
+      return newState;
 
     case GET_ALL_USERS:
       console.log(
@@ -40,18 +39,17 @@ export default function userReducer(state = Immutable.Map(), action) {
         ', action=',
         action
       );
-      const immuData2 = Immutable.Map({
-        ...state,
-        users: action.payload.allUsers
-      });
-      console.log('immuData2=', immuData2);
-      return immuData2;
+      // Immutable.fromJS() will make all sub elements immutable, versus Immutable.Map() will only make level1 elements immutable
+      newState = Immutable.fromJS({ ...state, users: action.payload.res });
+      console.log('newState =', newState);
+      // return newState;
+      return newState;
 
     case GET_USER:
       return action.payload.user;
     // case LOGIN_USER:
 
     default:
-      return state;
+      return newState;
   }
 }

@@ -9,9 +9,9 @@ export const DELETE_USER = `@@CHRISWANG/${APPNAME}/DELETE_USER`;
 
 export const getAllUsers = () =>
   get(`/api/user`, {
-    success: allUsers => ({
+    success: res => ({
       type: GET_ALL_USERS,
-      payload: { allUsers }
+      payload: { res }
     })
   });
 export const getUser = id =>
@@ -26,9 +26,9 @@ export const registerUser = apiData =>
     `/api/user`,
     // ?sessionId=${sessionId}
     {
-      success: newRecord => ({
+      success: res => ({
         type: REGISTER_USER,
-        payload: { newRecord }
+        payload: { res }
       }),
       body: apiData
     }

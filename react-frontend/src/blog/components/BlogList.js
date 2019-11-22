@@ -1,7 +1,7 @@
 import React from 'react';
 import BlogCard from './BlogCard';
 
-class BlogTable extends React.Component {
+class BlogList extends React.Component {
   constructor(props) {
     super(props);
     const { getAllBlogs } = this.props;
@@ -9,13 +9,13 @@ class BlogTable extends React.Component {
   }
   render() {
     const { blogs } = this.props;
-    // console.log('blogs=', blogs);
+    console.log('BlogList blogs=', blogs);
     return (
       <div>
         <hr />
         <h1>The Blog Table contains a list of BlogCards</h1>
         {blogs.map(b => {
-          // console.log('blog = ', b);
+          console.log('blog = ', b);
           return <BlogCard key={b.get('id')} blog={b} />;
         })}
         <hr />
@@ -23,4 +23,4 @@ class BlogTable extends React.Component {
     );
   }
 }
-export default BlogTable;
+export default BlogList;

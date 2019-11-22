@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from 'antd';
 import { Link } from 'react-router-dom';
-import BlogTableCtn from '../../blog/containers/BlogTableCtn';
+import BlogListCtn from '../../blog/containers/BlogListCtn';
 
 class BasicLayout extends React.Component {
   render() {
@@ -20,7 +20,7 @@ class BasicLayout extends React.Component {
         <Link to="/blog">
           <Button>Blog</Button>
         </Link>
-        <BlogTableCtn />
+        <BlogListCtn />
       </div>
     );
   }

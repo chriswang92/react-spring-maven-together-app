@@ -11,8 +11,8 @@ class UserList extends React.Component {
       <div>
         <h1>Content, total users#:</h1>
         {users.map(u => (
-          <div key={u.id}>
-            id: {u.id}, username: {u.username}
+          <div key={u.get('id')}>
+            id: {u.get('id')}, username: {u.get('username')}
           </div>
         ))}
       </div>

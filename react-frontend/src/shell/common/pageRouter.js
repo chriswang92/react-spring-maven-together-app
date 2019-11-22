@@ -13,7 +13,7 @@ const routerConfig = {
   },
   '/register': {
     component: LoadableCpnt({
-      loader: () => import('../../register&login/components/MainLayout')
+      loader: () => import('../../register&login/components/UserMainPage')
     })
   },
   '/game': {
@@ -23,7 +23,7 @@ const routerConfig = {
   },
   '/blog': {
     component: LoadableCpnt({
-      loader: () => import('../../blog/containers/BlogManagePageCtn')
+      loader: () => import('../../blog/components/BlogMainPage')
     })
   }
 };

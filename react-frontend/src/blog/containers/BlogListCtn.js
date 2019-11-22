@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import BlogTable from '../../blog/components/BlogTable';
+import BlogTable from '../components/BlogList';
 import { blogSelector } from '../selectors/blogSelector';
 import { getAllBlogs } from '../actions/apis';
 

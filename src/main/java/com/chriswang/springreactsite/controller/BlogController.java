@@ -4,6 +4,7 @@ import com.chriswang.springreactsite.model.Blog;
 import com.chriswang.springreactsite.service.BlogService;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,7 +21,7 @@ public class BlogController {
         return service.getAll();
     }
     @RequestMapping(value = "blog", method = RequestMethod.POST)
-    public void add() throws Exception {
-        service.add(new Blog("Blog"+ RandomStringUtils.randomAlphabetic(10)));
+    public Blog add(@RequestBody Blog blog) throws Exception {
+        return service.add(blog);
     }
 }

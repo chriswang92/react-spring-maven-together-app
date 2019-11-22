@@ -6,7 +6,7 @@ class BlogCard extends React.Component {
     const { blog } = this.props;
     const name = blog.get('name');
     const id = blog.get('id');
-    const content = blog.get('content');
+    const content = blog.get('content') || 'no content';
     return (
       <div>
         <h2>

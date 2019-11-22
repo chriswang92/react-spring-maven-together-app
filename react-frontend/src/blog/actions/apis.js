@@ -25,9 +25,9 @@ export const addBlog = apiData =>
     `/api/blog`,
     // ?sessionId=${sessionId}
     {
-      success: newRecord => ({
+      success: res => ({
         type: ADD_BLOG,
-        payload: { newRecord }
+        payload: { res }
       }),
       body: apiData
     }

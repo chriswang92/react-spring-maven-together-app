@@ -17,6 +17,12 @@ public class Blog {
 
     public Blog(String name) {
         this.name = name;
+        this.content = "";
+    }
+
+    public Blog(String name, String content) {
+        this.name = name;
+        this.content = content;
     }
 
     @Override
@@ -24,6 +30,7 @@ public class Blog {
         return "Blog{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", content='" + content + '\'' +
                 '}';
     }
 
@@ -41,5 +48,13 @@ public class Blog {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 }
