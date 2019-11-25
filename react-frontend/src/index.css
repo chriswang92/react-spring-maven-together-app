@@ -11,8 +11,11 @@ App {
 }
 #root{
   /* text-align: center; */
-  margin: 120px;
-  background-color: lightskyblue;
+  /* margin: 120px; */
+  /* background-color: lightskyblue; */
+  background: url('../src/static/scenic-view-of-mountains-during-dawn-1261728.jpg') no-repeat center fixed; 
+  /* background-repeat: no-repeat;
+  background-size: auto; */
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
