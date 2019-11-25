@@ -13,19 +13,19 @@ public class Blog {
     private Long id;
     private String title;
     private String content;
-    private BlogCategory category;
+    private String[] category;
 
     public Blog() {
     }
 
     public Blog(String title) {
-        this(title, "", BlogCategory.DEFAULT);
+        this(title, "", new String[] {BlogCategory.DEFAULT.label});
     }
 
     public Blog(String title, String content) {
-        this(title, content, BlogCategory.DEFAULT);
+        this(title, content, new String[] {BlogCategory.DEFAULT.label});
     }
-    public Blog(String title, String content, BlogCategory category) {
+    public Blog(String title, String content, String[] category) {
         this.title = title;
         this.content = content;
         this.category = category;
@@ -64,11 +64,11 @@ public class Blog {
         this.content = content;
     }
 
-    public BlogCategory getCategory() {
+    public String[] getCategory() {
         return category;
     }
 
-    public void setCategory(BlogCategory category) {
+    public void setCategory(String[] category) {
         this.category = category;
     }
 

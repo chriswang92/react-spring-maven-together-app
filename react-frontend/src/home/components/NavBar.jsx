@@ -8,19 +8,19 @@ const { Header } = Layout;
 const { SubMenu } = Menu;
 
 class NavBar extends Component {
-//   static contextType = ApplicationContext;
+  //   static contextType = ApplicationContext;
 
   onModalClose = () => {
     // this.context.dispatch(Actions.SHOW_LOGIN_UPDATE, {
     //   showLogin: false,
     //   showRegistration: false
     // });
-    };
+  };
   handleLogOut = () => {
     // this.context.dispatch(Actions.IS_USER_LOGGED_IN_UPDATE, {
     //   isUserLoggedIn: false
     // });
-    };
+  };
   render() {
     return (
       <Fragment>
@@ -33,9 +33,12 @@ class NavBar extends Component {
             defaultSelectedKeys={[]}
             selectable={false}
           >
-            
-            <Menu.Item key="game"><Link to="/game">Games</Link></Menu.Item>
-            <Menu.Item key="blog"><Link to="/blog">Blogs</Link></Menu.Item>
+            <Menu.Item key="game">
+              <Link to="/game">Games</Link>
+            </Menu.Item>
+            <Menu.Item key="blog">
+              <Link to="/blog">Blogs</Link>
+            </Menu.Item>
             {this.context.isUserLoggedIn ? (
               <SubMenu
                 title={
@@ -56,14 +59,14 @@ class NavBar extends Component {
               <Menu.Item
                 key="3"
                 onClick={() =>
-                //   this.context.dispatch(Actions.SHOW_LOGIN_UPDATE, {
-                //     showLogin: true,
-                //     showRegistration: false
-                //   })
-                {}
+                  //   this.context.dispatch(Actions.SHOW_LOGIN_UPDATE, {
+                  //     showLogin: true,
+                  //     showRegistration: false
+                  //   })
+                  {}
                 }
               >
-                Login & Signup
+                <Link to="/login">Login & Signup</Link>
               </Menu.Item>
             )}
           </Menu>

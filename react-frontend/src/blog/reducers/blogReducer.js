@@ -36,25 +36,20 @@ export default function blogReducer(state = Immutable.Map(), action) {
         ', action=',
         action
       );
-      // Immutable.fromJS() will make all sub elements immutable, versus Immutable.Map() will only make level1 elements immutable
-      newState = Immutable.fromJS({ ...state, blogs: action.payload.res });
-      console.log('newState =', newState);
-      return newState;
+      // // Immutable.fromJS() will make all sub elements immutable, versus Immutable.Map() will only make level1 elements immutable
+      // newState = Immutable.fromJS({ ...state, blogs: action.payload.res });
+      // console.log('newState =', newState);
+      return state.set('blogs', Immutable.fromJS(action.payload.res));
 
     case GET_ALL_BLOGCATEGORIES:
       console.log(
-        'in blogReducer->GET_ALL_BLOGS, state=',
+        'in blogReducer->GET_ALL_BLOGCATEGORIES, state=',
         state,
         ', action=',
         action
       );
-      // Immutable.fromJS() will make all sub elements immutable, versus Immutable.Map() will only make level1 elements immutable
-      newState = Immutable.fromJS({
-        ...state,
-        blogCategories: action.payload.res
-      });
-      console.log('newState =', newState);
-      return newState;
+      // return newState;
+      return state.set('blogCategories', Immutable.fromJS(action.payload.res));
     // case GET_BLOG:
     //   break;
     default:

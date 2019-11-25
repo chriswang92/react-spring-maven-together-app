@@ -32,7 +32,7 @@ public class Dataloader implements ApplicationRunner {
             bookRepository.save(new Book("AutoLoadedBook - "+ RandomStringUtils.randomAlphabetic(10)));
             userRepository.save(new User("AutoLoadedUser - "+ RandomStringUtils.randomAlphabetic(10)));
             blogRepository.save(new Blog("AutoLoadedBlog - "+ RandomStringUtils.randomAlphabetic(10),
-                    "AutoLoadedBlogContent - "+ RandomStringUtils.randomAlphabetic(30), BlogCategory.PROGRAMMING));
+                    "AutoLoadedBlogContent - "+ RandomStringUtils.randomAlphabetic(30), new String[]{BlogCategory.PROGRAMMING.label}));
         }
     }
 }

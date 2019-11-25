@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Map;
+
 @RestController
 @RequestMapping("api/")
 public class BlogController {
@@ -22,7 +24,7 @@ public class BlogController {
         return service.getAll();
     }
     @RequestMapping(value = "blogCategory", method = RequestMethod.GET)
-    public Iterable<BlogCategory> getAllCategory() {
+    public Map<Integer, String> getAllCategory() {
         return service.getAllCategory();
     }
     @RequestMapping(value = "blog", method = RequestMethod.POST)

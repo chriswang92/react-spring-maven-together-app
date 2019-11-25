@@ -5,6 +5,8 @@ import { Redirect } from 'react-router-dom';
 import ContentCtn from '../../register&login/containers/UserListCtn';
 import { Link } from 'react-router-dom';
 import BlogTableCtn from '../containers/BlogListCtn';
+import '../../index.css';
+import Immutable from 'immutable';
 
 // const Password = Input.Password;
 const FormItem = Form.Item;
@@ -21,37 +23,29 @@ class BlogManagePage extends React.Component {
     // getBlogCategories();
   }
   componentDidMount() {
-    const { getBlogCategories } = this.props;
-    getBlogCategories();
+    // const { getBlogCategories } = this.props;
+    // getBlogCategories();
   }
-  handleRegister = e => {
-    const { form, blogs, addBlog } = this.props;
+  handleSubmit = e => {
+    e.preventDefault();
+    const { form, blogCategories, addBlog } = this.props;
+    const { selectedTags } = this.state;
     form.validateFields((err, values) => {
       if (err) {
         console.log('handleRegister has err: ', err);
         return;
       }
-      // console.log('in handleRegister/this.props.users=', this.props.users);
-      // if (blogs.find(b => b.name === values.name)) {
-      //   console.log('username already exist!');
-      //   return;
-      // }
-      // console.log('handleRegister success, Received values of form: ', values);
-      addBlog(values);
+      //convert selectedTags to blogCategories which is an array of blogCategory objects
+      let readyCategories = Immutable.List();
+      selectedTags.forEach(tag => {
+        if (blogCategories.includes(tag)) {
+          const id = blogCategories.findKey((v, k) => v === tag);
+          readyCategories.insert(tag);
+        }
+      });
+      // const keys = filteredEntries.keys();
+      addBlog({ ...values, category: selectedTags });
     });
-  };
-  handleSubmit = e => {
-    e.preventDefault();
-    // const { isLogin } = this.props;
-    // if (isLogin) {
-    //   console.log('before handleLogin, loginSuccess=', this.state.loginSuccess);
-    //   this.setState({
-    //     loginSuccess: true
-    //   });
-    //   console.log('after handleLogin, loginSuccess=', this.state.loginSuccess);
-    // } else {
-    this.handleRegister(e);
-    // }
   };
   handleValidator = (rule, val, callback) => {
     if (!val) {
@@ -77,77 +71,90 @@ class BlogManagePage extends React.Component {
   };
   render() {
     const { isAdd, blogCategories } = this.props;
-    console.log(blogCategories);
+    console.log(
+      blogCategories,
+      blogCategories.keys(),
+      blogCategories.valueSeq().toJS()
+    );
     const { selectedTags } = this.state;
     const { getFieldDecorator } = this.props.form;
     return (
-        <div id='BlogManagePageBackground'>
-          <Form id='blogManagePageElement' className="login-form" onSubmit={this.handleSubmit}>
-            <FormItem>
-              {getFieldDecorator('name', {
-                // initialValue: {username:'', password:''},
-                rules: [
-                  { required: true, message: 'Please input your username!' },
-                  // {min: 8, message: 'username needs to be at least 8 chars!'}
-                  { validator: this.handleValidator }
-                ]
-              })(
-                <Input
-                  prefix={
-                    <Icon type="file" style={{ color: 'rgba(0,0,0,.25)' }} />
-                  }
-                  placeholder="Blog name"
-                />
-              )}
-            </FormItem>
-            <FormItem>
-              {getFieldDecorator('content', {
-                rules: [
-                  { required: true, message: 'Please input your content!' }
-                  // { min: 8, message: 'password needs to be at least 8 chars!' }
-                ]
-              })(
-                <TextArea
-                  rows={8}
-                  // autosize
-                  // type='password'
-                  placeholder="Input blog content here"
-                />
-              )}
+      <div id="PageBackground">
+        <Form
+          id="PageElement"
+          className="login-form"
+          onSubmit={this.handleSubmit}
+        >
+          <FormItem>
+            {getFieldDecorator('title', {
+              // initialValue: {username:'', password:''},
+              rules: [
+                { required: true, message: 'Please input title!' },
+                // {min: 8, message: 'username needs to be at least 8 chars!'}
+                { validator: this.handleValidator }
+              ]
+            })(
+              <Input
+                prefix={
+                  <Icon type="file" style={{ color: 'rgba(0,0,0,.25)' }} />
+                }
+                placeholder="Blog title"
+              />
+            )}
+          </FormItem>
+          <FormItem>
+            {getFieldDecorator('content', {
+              rules: [
+                { required: true, message: 'Please input your content!' }
+                // { min: 8, message: 'password needs to be at least 8 chars!' }
+              ]
+            })(
+              <TextArea
+                rows={8}
+                // autosize
+                // type='password'
+                placeholder="Input blog content here"
+              />
+            )}
           </FormItem>
           <FormItem>
             <div>
-              {blogCategories.map(category => (
-                <Tag
-                  key={category}
-                  checked={selectedTags.indexOf(category) > -1}
-                  onChange={checked => this.handleTagChange(category, checked)}
-                >
-                  {category}
-                </Tag>
-              ))}
+              {blogCategories
+                .valueSeq()
+                // .toJS()
+                .map((categoryLabel, categoryId) => (
+                  <CheckableTag
+                    key={categoryLabel}
+                    checked={selectedTags.indexOf(categoryLabel) > -1}
+                    onChange={checked =>
+                      this.handleTagChange(categoryLabel, checked)
+                    }
+                  >
+                    {categoryLabel}
+                  </CheckableTag>
+                ))}
             </div>
-            </FormItem>
-            <FormItem>
-              <Button
-                type="primary"
-                htmlType="submit"
-                className="login-form-button"
-              >
-                {isAdd ? 'Add' : 'Save'}
-              </Button>
-              {/* Or{' '}
+          </FormItem>
+          <FormItem>
+            <Button
+              type="primary"
+              htmlType="submit"
+              className="login-form-button"
+            >
+              {isAdd ? 'Add' : 'Save'}
+            </Button>
+            {/* Or{' '}
               <Link to={isAdd ? '/register' : '/login'}>
                 {isAdd ? 'register' : 'login'} now!
               </Link> */}
-              {this.submitSuccess ? <p>Submit success!</p> : null}
-            </FormItem>
-          </Form>
+            {this.submitSuccess ? <p>Submit success!</p> : null}
+          </FormItem>
+        </Form>
 
-          <Link to="/home" id="blogManagePageElement">
-            <Button>home</Button>
-          </Link>
-        </div>
+        <Link to="/home" id="PageElement">
+          <Button>home</Button>
+        </Link>
+      </div>
     );
   }
 }

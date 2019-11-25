@@ -5,7 +5,7 @@ import { addBlog, getBlogCategories } from '../actions/apis';
 import { blogCategorySelector } from '../selectors/blogSelector';
 
 const mapStateToProps = (state, props) => ({
-  blogCategories: blogCategorySelector(state) || []
+  blogCategories: blogCategorySelector(state)
 });
 const mapDispatchToProps = dispatch =>
   bindActionCreators({ addBlog, getBlogCategories }, dispatch);

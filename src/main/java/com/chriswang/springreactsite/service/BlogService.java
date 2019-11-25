@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 @Component
 public class BlogService {
@@ -18,8 +20,12 @@ public class BlogService {
     public Iterable<Blog> getAll() {
         return repository.findAll();
     }
-    public Iterable<BlogCategory> getAllCategory() {
-        return Arrays.asList(BlogCategory.values());
+    public Map<Integer, String> getAllCategory() {
+        Map<Integer, String> res = new HashMap<>();
+        for (BlogCategory category : BlogCategory.values()) {
+            res.put(category.id, category.label);
+        }
+        return res;
     }
     public Blog add(Blog blog) throws Exception {
         try {

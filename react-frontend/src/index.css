@@ -1,7 +1,7 @@
 body {
   margin: 70px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -9,16 +9,17 @@ body {
 App {
   background-color: blue;
 }
-#root{
+#root {
   /* text-align: center; */
   /* margin: 120px; */
   /* background-color: lightskyblue; */
-  background: url('../src/static/scenic-view-of-mountains-during-dawn-1261728.jpg') no-repeat center fixed; 
+  background: url('../src/static/scenic-view-of-mountains-during-dawn-1261728.jpg')
+    no-repeat center fixed;
   /* background-repeat: no-repeat;
   background-size: auto; */
 }
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
 .login-form {
@@ -29,4 +30,29 @@ code {
 }
 .login-form-button {
   width: 100%;
+}
+
+#list {
+  border: 1px solid black;
+  margin: 10px 50px 10px 50px;
+  background-color: lightblue;
+  text-align: center;
+}
+#MainPage {
+  background-color: lightpink;
+}
+#PageBackground {
+  background-color: lightgoldenrodyellow;
+  margin: 5px 50px 10px 50px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  /* display: block;
+    margin-left: auto;
+    margin-right: auto; */
+}
+#PageElement {
+  text-align: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
