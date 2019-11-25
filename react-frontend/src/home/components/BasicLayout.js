@@ -2,11 +2,13 @@ import React from 'react';
 import { Button } from 'antd';
 import { Link } from 'react-router-dom';
 import BlogListCtn from '../../blog/containers/BlogListCtn';
+import NavBar from './NavBar';
 
 class BasicLayout extends React.Component {
   render() {
     return (
       <div>
+        <NavBar />
         <h1>Welcome to chriswcg 's Home page</h1>
         <Link to="/login">
           <Button>login</Button>

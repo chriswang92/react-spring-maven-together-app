@@ -1,0 +1,25 @@
+
+#blogs{
+    border: 1px solid black;;
+    margin: 10px 50px 10px 50px;
+    background-color: lightblue;
+    text-align: center;
+}
+#BlogMainPage{
+    background-color: lightpink
+}
+#BlogManagePageBackground{
+    background-color: lightgoldenrodyellow;
+    margin: 5px 50px 10px 50px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    /* display: block;
+    margin-left: auto;
+    margin-right: auto; */
+}
+#blogManagePageElement{
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

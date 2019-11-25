@@ -62,60 +62,60 @@ class BlogManagePage extends React.Component {
     const { isAdd } = this.props;
     const { getFieldDecorator } = this.props.form;
     return (
-      <div>
-        <Form className="login-form" onSubmit={this.handleSubmit}>
-          <FormItem>
-            {getFieldDecorator('name', {
-              // initialValue: {username:'', password:''},
-              rules: [
-                { required: true, message: 'Please input your username!' },
-                // {min: 8, message: 'username needs to be at least 8 chars!'}
-                { validator: this.handleValidator }
-              ]
-            })(
-              <Input
-                prefix={
-                  <Icon type="file" style={{ color: 'rgba(0,0,0,.25)' }} />
-                }
-                placeholder="Blog name"
-              />
-            )}
-          </FormItem>
-          <FormItem>
-            {getFieldDecorator('content', {
-              rules: [
-                { required: true, message: 'Please input your content!' }
-                // { min: 8, message: 'password needs to be at least 8 chars!' }
-              ]
-            })(
-              <TextArea
-                rows={8}
-                // autosize
-                // type='password'
-                placeholder="Input blog content here"
-              />
-            )}
-          </FormItem>
-          <FormItem>
-            <Button
-              type="primary"
-              htmlType="submit"
-              className="login-form-button"
-            >
-              {isAdd ? 'Add' : 'Save'}
-            </Button>
-            {/* Or{' '}
-            <Link to={isAdd ? '/register' : '/login'}>
-              {isAdd ? 'register' : 'login'} now!
-            </Link> */}
-            {this.submitSuccess ? <p>Submit success!</p> : null}
-          </FormItem>
-        </Form>
+        <div id='BlogManagePageBackground'>
+          <Form id='blogManagePageElement' className="login-form" onSubmit={this.handleSubmit}>
+            <FormItem>
+              {getFieldDecorator('name', {
+                // initialValue: {username:'', password:''},
+                rules: [
+                  { required: true, message: 'Please input your username!' },
+                  // {min: 8, message: 'username needs to be at least 8 chars!'}
+                  { validator: this.handleValidator }
+                ]
+              })(
+                <Input
+                  prefix={
+                    <Icon type="file" style={{ color: 'rgba(0,0,0,.25)' }} />
+                  }
+                  placeholder="Blog name"
+                />
+              )}
+            </FormItem>
+            <FormItem>
+              {getFieldDecorator('content', {
+                rules: [
+                  { required: true, message: 'Please input your content!' }
+                  // { min: 8, message: 'password needs to be at least 8 chars!' }
+                ]
+              })(
+                <TextArea
+                  rows={8}
+                  // autosize
+                  // type='password'
+                  placeholder="Input blog content here"
+                />
+              )}
+            </FormItem>
+            <FormItem>
+              <Button
+                type="primary"
+                htmlType="submit"
+                className="login-form-button"
+              >
+                {isAdd ? 'Add' : 'Save'}
+              </Button>
+              {/* Or{' '}
+              <Link to={isAdd ? '/register' : '/login'}>
+                {isAdd ? 'register' : 'login'} now!
+              </Link> */}
+              {this.submitSuccess ? <p>Submit success!</p> : null}
+            </FormItem>
+          </Form>
 
-        <Link to="/home">
-          <Button>home</Button>
-        </Link>
-      </div>
+          <Link to="/home" id="blogManagePageElement">
+            <Button>home</Button>
+          </Link>
+        </div>
     );
   }
 }
