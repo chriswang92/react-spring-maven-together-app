@@ -1,10 +1,13 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import BlogManagePage from '../components/BlogManagePage';
-import { addBlog } from '../actions/apis';
+import { addBlog, getBlogCategories } from '../actions/apis';
+import { blogCategorySelector } from '../selectors/blogSelector';
 
-const mapStateToProps = null;
+const mapStateToProps = (state, props) => ({
+  blogCategories: blogCategorySelector(state) || []
+});
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({ addBlog }, dispatch);
+  bindActionCreators({ addBlog, getBlogCategories }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(BlogManagePage);

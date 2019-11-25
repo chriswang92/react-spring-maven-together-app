@@ -5,7 +5,15 @@ export const UPDATE_BLOG = `@@CHRISWANG/${APPNAME}/UPDATE_BLOG`;
 export const GET_ALL_BLOGS = `@@CHRISWANG/${APPNAME}/GET_ALL_BLOGS`;
 export const GET_BLOG = `@@CHRISWANG/${APPNAME}/GET_BLOG`;
 export const DELETE_BLOG = `@@CHRISWANG/${APPNAME}/DELETE_BLOG`;
+export const GET_ALL_BLOGCATEGORIES = `@@CHRISWANG/${APPNAME}/GET_ALL_BLOGCATEGORIES`;
 
+export const getBlogCategories = () =>
+  get(`/api/blogCategory`, {
+    success: res => ({
+      type: GET_ALL_BLOGCATEGORIES,
+      payload: { res }
+    })
+  });
 export const getAllBlogs = () =>
   get(`/api/blog`, {
     success: res => ({

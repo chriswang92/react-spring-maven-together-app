@@ -6,6 +6,7 @@ import com.chriswang.springreactsite.model.User;
 import com.chriswang.springreactsite.repository.BlogRepository;
 import com.chriswang.springreactsite.repository.BookRepository;
 import com.chriswang.springreactsite.repository.UserRepository;
+import com.chriswang.springreactsite.utils.enums.BlogCategory;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -31,7 +32,7 @@ public class Dataloader implements ApplicationRunner {
             bookRepository.save(new Book("AutoLoadedBook - "+ RandomStringUtils.randomAlphabetic(10)));
             userRepository.save(new User("AutoLoadedUser - "+ RandomStringUtils.randomAlphabetic(10)));
             blogRepository.save(new Blog("AutoLoadedBlog - "+ RandomStringUtils.randomAlphabetic(10),
-                    "AutoLoadedBlogContent - "+ RandomStringUtils.randomAlphabetic(30)));
+                    "AutoLoadedBlogContent - "+ RandomStringUtils.randomAlphabetic(30), BlogCategory.PROGRAMMING));
         }
     }
 }
