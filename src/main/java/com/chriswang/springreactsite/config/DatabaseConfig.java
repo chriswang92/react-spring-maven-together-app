@@ -1,4 +1,4 @@
-package com.chriswang.springreactsite;
+package com.chriswang.springreactsite.config;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
