@@ -1,7 +1,7 @@
 import React from 'react';
 import configureStore from '../utils/store';
 import Immutable from 'immutable';
-import { USER_STATE, BLOG_STATE } from '../config/constants';
+import { USER_STATE, BLOG_STATE, HOME_STATE } from '../config/constants';
 import RootRouter from './RootRouter';
 
 const userInitialState = Immutable.Map({
@@ -17,9 +17,13 @@ const blogInitialState = Immutable.Map({
     })
   ]
 });
+
+const homeInitialState = Immutable.Map({ currentDisplayPage: 'home' });
+
 const persistedState = Immutable.Map({
   [USER_STATE]: userInitialState,
-  [BLOG_STATE]: blogInitialState
+  [BLOG_STATE]: blogInitialState,
+  [HOME_STATE]: homeInitialState
 });
 
 class App extends React.Component {

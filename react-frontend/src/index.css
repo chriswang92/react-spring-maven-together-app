@@ -13,10 +13,10 @@ App {
   /* text-align: center; */
   /* margin: 120px; */
   /* background-color: lightskyblue; */
-  background: url('../src/static/scenic-view-of-mountains-during-dawn-1261728.jpg')
+  /* background: url('../src/static/scenic-view-of-mountains-during-dawn-1261728.jpg')
     no-repeat center fixed;
-  /* background-repeat: no-repeat;
-  background-size: auto; */
+  background-repeat: no-repeat; */
+  /* background-size: auto; */
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -55,4 +55,13 @@ code {
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+/* blog list styles */
+.demo-loadmore-list {
+  min-height: 350px;
+}
+
+.homeLayout {
+  /* margin: 0 0; */
 }

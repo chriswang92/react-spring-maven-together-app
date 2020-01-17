@@ -1,13 +1,14 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import BasicLayout from '../components/BasicLayout';
-import { blogSelector } from './../../blog/selectors/blogSelector';
+import { blogSelector } from '../../blog/selectors';
+import { selectedBlogIdSelector } from './../../blog/selectors';
 
-const mapStateToProps = null;
-// (state, props) => ({
-//   // users: userSelector(state)
-//   blogs: blogSelector(state)
-// });
+const mapStateToProps = (state, props) => ({
+  // users: userSelector(state)
+  // blogs: blogSelector(state)
+  selectedBlogId: selectedBlogIdSelector(state)
+});
 const mapDispatchToProps = null;
 // dispatch =>
 // bindActionCreators({

@@ -29,10 +29,10 @@ public class Dataloader implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
         for (int i=0;i<3;i++) {
-            bookRepository.save(new Book("AutoLoadedBook - "+ RandomStringUtils.randomAlphabetic(10)));
-            userRepository.save(new User("AutoLoadedUser - "+ RandomStringUtils.randomAlphabetic(10)));
-            blogRepository.save(new Blog("AutoLoadedBlog - "+ RandomStringUtils.randomAlphabetic(10),
-                    "AutoLoadedBlogContent - "+ RandomStringUtils.randomAlphabetic(30), new String[]{BlogCategory.PROGRAMMING.label}));
+//            bookRepository.save(new Book("AutoLoadedBook - "+ RandomStringUtils.randomAlphabetic(10)));
+//            userRepository.save(new User("AutoLoadedUser - "+ RandomStringUtils.randomAlphabetic(10)));
+            blogRepository.save(new Blog("AutoLoadedBlog - "+ RandomStringUtils.randomAlphabetic(10),"AutoLoadedBlogDesc - "+ RandomStringUtils.randomAlphabetic(30),
+                    "AutoLoadedBlogContent - "+ RandomStringUtils.randomAlphabetic(13500), new String[]{BlogCategory.randomCategory().label}));
         }
     }
 }

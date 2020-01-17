@@ -1,10 +1,7 @@
 import React from 'react';
-import { Form, Icon, Input, Button, Checkbox, Tag } from 'antd';
+import { Form, Icon, Input, Button, Tag } from 'antd';
 import 'antd/dist/antd.css';
-import { Redirect } from 'react-router-dom';
-import ContentCtn from '../../register&login/containers/UserListCtn';
 import { Link } from 'react-router-dom';
-import BlogTableCtn from '../containers/BlogListCtn';
 import '../../index.css';
 import Immutable from 'immutable';
 
@@ -19,12 +16,12 @@ class BlogManagePage extends React.Component {
     this.state = {
       selectedTags: []
     };
-    // const { getBlogCategories } = this.props;
-    // getBlogCategories();
+    const { getBlogCategories } = this.props;
+    getBlogCategories();
   }
   componentDidMount() {
-    // const { getBlogCategories } = this.props;
-    // getBlogCategories();
+    const { getBlogCategories } = this.props;
+    getBlogCategories();
   }
   handleSubmit = e => {
     e.preventDefault();
@@ -71,11 +68,13 @@ class BlogManagePage extends React.Component {
   };
   render() {
     const { isAdd, blogCategories } = this.props;
-    console.log(
-      blogCategories,
-      blogCategories.keys(),
-      blogCategories.valueSeq().toJS()
-    );
+    if (blogCategories) {
+      console.log(
+        blogCategories,
+        blogCategories.keys(),
+        blogCategories.valueSeq().toJS()
+      );
+    }
     const { selectedTags } = this.state;
     const { getFieldDecorator } = this.props.form;
     return (
@@ -120,19 +119,21 @@ class BlogManagePage extends React.Component {
           <FormItem>
             <div>
               {blogCategories
-                .valueSeq()
-                // .toJS()
-                .map((categoryLabel, categoryId) => (
-                  <CheckableTag
-                    key={categoryLabel}
-                    checked={selectedTags.indexOf(categoryLabel) > -1}
-                    onChange={checked =>
-                      this.handleTagChange(categoryLabel, checked)
-                    }
-                  >
-                    {categoryLabel}
-                  </CheckableTag>
-                ))}
+                ? blogCategories
+                    .valueSeq()
+                    // .toJS()
+                    .map((categoryLabel, categoryId) => (
+                      <CheckableTag
+                        key={categoryLabel}
+                        checked={selectedTags.indexOf(categoryLabel) > -1}
+                        onChange={checked =>
+                          this.handleTagChange(categoryLabel, checked)
+                        }
+                      >
+                        {categoryLabel}
+                      </CheckableTag>
+                    ))
+                : null}
             </div>
           </FormItem>
           <FormItem>

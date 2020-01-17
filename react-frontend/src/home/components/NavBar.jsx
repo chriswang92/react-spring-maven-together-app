@@ -21,18 +21,25 @@ class NavBar extends Component {
     //   isUserLoggedIn: false
     // });
   };
+  handleItemClick = ({ item, key, keyPath, domEvent }) => {};
   render() {
+    const { setSelectedBlogId } = this.props;
+    // console.log(setSelectedBlogId);
     return (
       <Fragment>
         <Header>
           <div className="logo" />
           <Menu
-            theme="dark"
+            theme="light"
             mode="horizontal"
             style={{ lineHeight: '64px', float: 'right' }}
             defaultSelectedKeys={[]}
             selectable={false}
+            // onClick={() => setSelectedBlogId(null)}
           >
+            <Menu.Item key="home">
+              <Link to="/home">Home</Link>
+            </Menu.Item>
             <Menu.Item key="game">
               <Link to="/game">Games</Link>
             </Menu.Item>
@@ -56,16 +63,7 @@ class NavBar extends Component {
                 </Menu.Item>
               </SubMenu>
             ) : (
-              <Menu.Item
-                key="3"
-                onClick={() =>
-                  //   this.context.dispatch(Actions.SHOW_LOGIN_UPDATE, {
-                  //     showLogin: true,
-                  //     showRegistration: false
-                  //   })
-                  {}
-                }
-              >
+              <Menu.Item key="3">
                 <Link to="/login">Login & Signup</Link>
               </Menu.Item>
             )}

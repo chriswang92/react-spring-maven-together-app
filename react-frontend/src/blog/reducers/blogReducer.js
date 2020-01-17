@@ -5,7 +5,8 @@ import {
   DELETE_BLOG,
   UPDATE_BLOG,
   GET_ALL_BLOGCATEGORIES
-} from '../actions/apis';
+} from '../api/apis';
+import { SET_SELECTED_BLOG_ID } from '../actions/RecordViewActions/recordViewAction';
 import { BLOG_STATE } from '../../config/constants';
 import Immutable from 'immutable';
 
@@ -13,33 +14,27 @@ export default function blogReducer(state = Immutable.Map(), action) {
   let newState = state;
   switch (action.type) {
     case ADD_BLOG:
-      console.log(
-        'in blogReducer->ADD_BLOG, state=',
-        state,
-        ', action=',
-        action
-      );
-
       newState = Immutable.fromJS({
         ...state,
         blogs: state
           .get('blogs') //Immutable.List.push(another immutable object), since the elements in the list are all immutable
           .push(Immutable.fromJS(action.payload.res))
       });
-      console.log('newState =', newState);
       return newState;
 
     case GET_ALL_BLOGS:
-      console.log(
-        'in blogReducer->GET_ALL_BLOGS, state=',
-        state,
-        ', action=',
-        action
-      );
-      // // Immutable.fromJS() will make all sub elements immutable, versus Immutable.Map() will only make level1 elements immutable
-      // newState = Immutable.fromJS({ ...state, blogs: action.payload.res });
-      // console.log('newState =', newState);
-      return state.set('blogs', Immutable.fromJS(action.payload.res));
+      let allBlogs = action.payload.res;
+      console.log(allBlogs);
+      // put the special one on the top
+      allBlogs.forEach((currVal, currIndex, array) => {
+        console.log(currVal, currIndex, array);
+        if (currVal.id === 50) {
+          const temp = currVal;
+          allBlogs[currIndex] = allBlogs[0];
+          allBlogs[0] = temp;
+        }
+      }, this);
+      return state.set('blogs', Immutable.fromJS(allBlogs));
 
     case GET_ALL_BLOGCATEGORIES:
       console.log(
@@ -48,10 +43,12 @@ export default function blogReducer(state = Immutable.Map(), action) {
         ', action=',
         action
       );
-      // return newState;
       return state.set('blogCategories', Immutable.fromJS(action.payload.res));
-    // case GET_BLOG:
-    //   break;
+
+    case SET_SELECTED_BLOG_ID:
+      console.log(state, action);
+      return newState.set('selectedBlogId', action.payload);
+
     default:
       return newState;
   }
