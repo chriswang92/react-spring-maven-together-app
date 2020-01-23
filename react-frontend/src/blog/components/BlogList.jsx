@@ -122,16 +122,16 @@ class BlogList extends React.Component {
     const { allBlogs } = this.props;
     const { part, initLoading, loading } = this.state;
     console.log('BlogList blogs=', allBlogs);
-    const displayList = allBlogs
+    const displayList = allBlogs && allBlogs.size > 0 ? allBlogs
       .map(blog => {
         const newB = Immutable.fromJS({
           ...blog.toJS(),
-          content: blog.get('content').substring(0, 100)
+          content: blog.get('content')? blog.get('content').substring(0, 100):''
         });
         console.log(blog, blog.toJS(), newB);
         return newB;
       })
-      .slice(0, part * 5);
+      .slice(0, part * 5) : [];
     console.log(displayList);
     const loadMore =
       !initLoading && !loading ? (
