@@ -1,7 +1,7 @@
 import React from 'react';
 import './index.css';
 import 'antd/dist/antd.css';
-import { List, Avatar, Button, Skeleton, Icon, Tag } from 'antd';
+import { List, Avatar, Button, Skeleton, Tag, Icon } from 'antd';
 import Styled from 'styled-components';
 import Immutable from 'immutable';
 
@@ -22,29 +22,86 @@ const IconText = ({ type, text }) => (
 );
 
 export const getAvatarAndTagByCategory = blog => {
-  // console.log(blog);
   const blogCategories = blog.get('category');
+  console.log(blogCategories);
   const res = [];
   blogCategories.forEach(Category => {
     const blogCategoryText = Category.toLowerCase();
-    if (blogCategoryText === 'programming') {
-      res.push({
-        avatar: <Avatar icon="apartment" />,
-        tag: <Tag color="cyan">programming</Tag>
-      });
-    }
-    if (blogCategoryText === 'fitness') {
-      res.push({
-        avatar: <Avatar icon="smile" />,
-        tag: <Tag color="blue">fitness</Tag>
-      });
+    switch (blogCategoryText) {
+      case 'programming': {
+        res.push({
+          avatar: <Avatar icon={<Icon type="windows" />} />,
+          tag: (
+            <Tag id="programming" color="cyan">
+              programming
+            </Tag>
+          ),
+          key: 1
+        });
+        break;
+      }
+      case 'frontend': {
+        res.push({
+          avatar: <Avatar icon={<Icon type="apple" />} />,
+          tag: (
+            <Tag id={blogCategoryText} color="green">
+              {blogCategoryText}
+            </Tag>
+          ),
+          key: 2
+        });
+        break;
+      }
+      case 'fitness': {
+        res.push({
+          avatar: <Avatar icon={<Icon type="bug" />} />,
+          tag: (
+            <Tag id="fitness" color="blue">
+              fitness
+            </Tag>
+          ),
+          key: 3
+        });
+        break;
+      }
+      case 'life': {
+        res.push({
+          avatar: <Avatar icon={<Icon type="smile" />} />,
+          tag: (
+            <Tag id={blogCategoryText} color="red">
+              {blogCategoryText}
+            </Tag>
+          ),
+          key: 4
+        });
+        break;
+      }
+      // case 'default': {
+      //   res.push({
+      //     avatar: <Avatar icon={<Icon type="question" />} />,
+      //     tag: (
+      //       <Tag id="default" color="purple">
+      //         default
+      //       </Tag>
+      //     ),
+      //     key: 5
+      //   });
+      //   break;
+      // }
+      default: {
+        // console.log(blogCategoryText + '123');
+        break;
+      }
     }
   });
   res.push({
-    avatar: (
-      <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+    avatar: <Avatar icon="user" />, //<Avatar icon={<Icon type="question" />} />,
+    tag: (
+      <Tag id="default" color="purple">
+        default
+      </Tag>
     ),
-    tag: <Tag color="purple">default</Tag>
+    key: 5
   });
   return res;
 };
@@ -77,6 +134,7 @@ class BlogList extends React.Component {
   handleRenderItem = blog => {
     const { setSelectedBlogId } = this.props;
     const avatarAndTagArr = getAvatarAndTagByCategory(blog);
+    console.log(avatarAndTagArr[0].avatar);
     return (
       <div className="zoom">
         <List.Item
