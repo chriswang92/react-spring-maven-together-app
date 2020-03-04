@@ -21,10 +21,12 @@ class NavBar extends Component {
     //   isUserLoggedIn: false
     // });
   };
-  handleItemClick = ({ item, key, keyPath, domEvent }) => {};
+  handleClick = ({ item, key, keyPath, domEvent }) => {
+    const { selectedBlogId, setSelectedBlogId } = this.props;
+    console.log(selectedBlogId);
+    if (selectedBlogId) setSelectedBlogId(null);
+  };
   render() {
-    const { setSelectedBlogId } = this.props;
-    // console.log(setSelectedBlogId);
     return (
       <Fragment>
         <Header>
@@ -35,7 +37,7 @@ class NavBar extends Component {
             style={{ lineHeight: '64px', float: 'right' }}
             defaultSelectedKeys={[]}
             selectable={false}
-            // onClick={() => setSelectedBlogId(null)}
+            onClick={this.handleClick}
           >
             <Menu.Item key="home">
               <Link to="/home">Home</Link>

@@ -39,12 +39,12 @@ export const getAvatarAndTagByCategory = blog => {
         tag: <Tag color="blue">fitness</Tag>
       });
     }
-    res.push({
-      avatar: (
-        <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-      ),
-      tag: <Tag color="purple">default</Tag>
-    });
+  });
+  res.push({
+    avatar: (
+      <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+    ),
+    tag: <Tag color="purple">default</Tag>
   });
   return res;
 };
@@ -122,16 +122,22 @@ class BlogList extends React.Component {
     const { allBlogs } = this.props;
     const { part, initLoading, loading } = this.state;
     console.log('BlogList blogs=', allBlogs);
-    const displayList = allBlogs && allBlogs.size > 0 ? allBlogs
-      .map(blog => {
-        const newB = Immutable.fromJS({
-          ...blog.toJS(),
-          content: blog.get('content')? blog.get('content').substring(0, 100):''
-        });
-        console.log(blog, blog.toJS(), newB);
-        return newB;
-      })
-      .slice(0, part * 5) : [];
+    const displayList =
+      allBlogs && allBlogs.size > 0
+        ? allBlogs
+            .reverse()
+            .map(blog => {
+              const newB = Immutable.fromJS({
+                ...blog.toJS(),
+                content: blog.get('content')
+                  ? blog.get('content').substring(0, 100)
+                  : ''
+              });
+              console.log(blog, blog.toJS(), newB);
+              return newB;
+            })
+            .slice(0, part * 5)
+        : [];
     console.log(displayList);
     const loadMore =
       !initLoading && !loading ? (

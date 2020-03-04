@@ -6,6 +6,7 @@ import enUS from 'antd/lib/locale-provider/en_US';
 import routerConfig from './common/pageRouter';
 import NotFound from './routes/Exception/404';
 import { createHashHistory } from 'history';
+import NavBarCtn from './containers/NavBarCtn';
 
 function RootRouter({ store }) {
   const LoginLayout = routerConfig['/login'].component;
@@ -19,6 +20,7 @@ function RootRouter({ store }) {
     <Provider store={store}>
       <ConfigProvider locale={enUS}>
         <HashRouter history={history}>
+          <NavBarCtn />
           <Switch>
             <Route exact path="/login" component={LoginLayout} />
             <Route exact path="/register" component={RegisterPage} />

@@ -1,12 +1,11 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import NavBar from '../components/NavBar';
-import { blogSelector } from '../../blog/selectors';
 import { setSelectedBlogId } from '../../blog/actions/RecordViewActions/recordViewAction';
+import { selectedBlogIdSelector } from '../../blog/selectors/index';
 
 const mapStateToProps = (state, props) => ({
-  // users: userSelector(state)
-  // blogs: blogSelector(state)
+  selectedBlogId: selectedBlogIdSelector(state)
 });
 const mapDispatchToProps = dispatch =>
   bindActionCreators({ setSelectedBlogId }, dispatch);

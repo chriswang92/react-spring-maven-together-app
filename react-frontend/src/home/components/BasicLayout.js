@@ -2,7 +2,6 @@ import React from 'react';
 import { Button } from 'antd';
 import { Link } from 'react-router-dom';
 import BlogListCtn from '../../blog/containers/BlogListCtn';
-import NavBar from './NavBar';
 import BlogPanelCtn from '../../blog/containers/recordView/BlogPanelCtn';
 
 const HomeHeader = () => (
@@ -35,7 +34,6 @@ class BasicLayout extends React.Component {
     console.log(selectedBlogId);
     return (
       <div className="homeLayout">
-        <NavBar />
         {selectedBlogId ? <BlogPanelCtn /> : <BlogListCtn />}
       </div>
     );

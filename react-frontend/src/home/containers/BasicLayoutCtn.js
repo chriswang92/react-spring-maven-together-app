@@ -9,10 +9,6 @@ const mapStateToProps = (state, props) => ({
   // blogs: blogSelector(state)
   selectedBlogId: selectedBlogIdSelector(state)
 });
-const mapDispatchToProps = null;
-// dispatch =>
-// bindActionCreators({
-// },
-// dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({}, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(BasicLayout);

@@ -1,7 +1,8 @@
 // import recordViewReducer from './recordViewReducer';
+import { combineReducers } from 'redux';
 import blogReducer from './blogReducer';
 
-export default {
+export default combineReducers({
   // recordViewReducer,
   blogReducer
-};
+});
