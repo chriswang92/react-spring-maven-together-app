@@ -14,7 +14,7 @@ const persistedState = { blogState: initialState };
 class BlogMainPage extends React.Component {
   constructor(props) {
     super(props);
-    this.store = configureStore(persistedState);
+    // this.store = configureStore(persistedState);
   }
   render() {
     return (

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form, Icon, Input, Button, Tag } from 'antd';
 import 'antd/dist/antd.css';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import '../../index.css';
 import Immutable from 'immutable';
 
@@ -14,7 +14,8 @@ class BlogManagePage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedTags: []
+      selectedTags: [],
+      redirect: false
     };
     const { getBlogCategories } = this.props;
     getBlogCategories();
@@ -42,6 +43,7 @@ class BlogManagePage extends React.Component {
       });
       // const keys = filteredEntries.keys();
       addBlog({ ...values, category: selectedTags });
+      this.setState({ redirect: true });
     });
   };
   handleValidator = (rule, val, callback) => {
@@ -67,6 +69,10 @@ class BlogManagePage extends React.Component {
     this.setState({ selectedTags: newSelectedTags });
   };
   render() {
+    const { selectedTags, redirect } = this.state;
+    if (redirect) {
+      return <Redirect to="/home" />;
+    }
     const { isAdd, blogCategories } = this.props;
     if (blogCategories) {
       console.log(
@@ -75,7 +81,6 @@ class BlogManagePage extends React.Component {
         blogCategories.valueSeq().toJS()
       );
     }
-    const { selectedTags } = this.state;
     const { getFieldDecorator } = this.props.form;
     return (
       <div id="PageBackground">

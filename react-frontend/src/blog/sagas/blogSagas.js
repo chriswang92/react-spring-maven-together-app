@@ -4,16 +4,15 @@ import { setSelectedBlogId } from '../actions/RecordViewActions/recordViewAction
 import { ADD_BLOG } from '../api/apis';
 
 function* addBlogSideEffectSaga({ payload }) {
-  console.log(payload);
+  message.success('Created new blog');
   try {
     const {
-      res: {
-        data: { id }
-      }
+      res: { id }
     } = payload;
     yield put(setSelectedBlogId(id));
+    message.success('Navigated to the new blog id: ' + id);
   } catch (err) {
-    message.error('Failed navigate to the new created blog');
+    message.error('Can not navigate to the new created blog');
   }
 }
 

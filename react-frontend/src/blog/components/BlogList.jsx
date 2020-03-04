@@ -22,7 +22,7 @@ const IconText = ({ type, text }) => (
 );
 
 export const getAvatarAndTagByCategory = blog => {
-  console.log(blog);
+  // console.log(blog);
   const blogCategories = blog.get('category');
   const res = [];
   blogCategories.forEach(Category => {
@@ -78,7 +78,7 @@ class BlogList extends React.Component {
     const { setSelectedBlogId } = this.props;
     const avatarAndTagArr = getAvatarAndTagByCategory(blog);
     return (
-      <div class="zoom">
+      <div className="zoom">
         <List.Item
           onClick={() => setSelectedBlogId(blog.get('id'))}
           key={blog.title}
@@ -115,13 +115,13 @@ class BlogList extends React.Component {
   handleBlogClick = e => {
     const { setSelectedBlogId } = this.props;
     setSelectedBlogId();
-    console.log(e, e.target);
+    // console.log(e, e.target);
   };
 
   render() {
     const { allBlogs } = this.props;
     const { part, initLoading, loading } = this.state;
-    console.log('BlogList blogs=', allBlogs);
+    // console.log('BlogList blogs=', allBlogs);
     const displayList =
       allBlogs && allBlogs.size > 0
         ? allBlogs
@@ -133,12 +133,12 @@ class BlogList extends React.Component {
                   ? blog.get('content').substring(0, 100)
                   : ''
               });
-              console.log(blog, blog.toJS(), newB);
+              // console.log(blog, blog.toJS(), newB);
               return newB;
             })
             .slice(0, part * 5)
         : [];
-    console.log(displayList);
+    // console.log(displayList);
     const loadMore =
       !initLoading && !loading ? (
         <div
