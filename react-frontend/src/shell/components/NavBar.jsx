@@ -1,10 +1,10 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { Menu, Layout, Avatar } from 'antd';
 import { Link } from 'react-router-dom';
 // import SignUp from '../signUp/SignUp';
 // import { ApplicationContext } from '../../context/ApplicationContext';
 // import Actions from '../../context/Actions';
-const { Header } = Layout;
+const { Header, Content, Footer } = Layout;
 const { SubMenu } = Menu;
 
 class NavBar extends Component {
@@ -28,7 +28,7 @@ class NavBar extends Component {
   };
   render() {
     return (
-      <Fragment>
+      <>
         <Header>
           <div className="logo" />
           <Menu
@@ -72,7 +72,7 @@ class NavBar extends Component {
           </Menu>
         </Header>
         {/* <SignUp modalCloseHandler={this.onModalClose} /> */}
-      </Fragment>
+      </>
     );
   }
 }

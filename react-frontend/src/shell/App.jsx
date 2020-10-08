@@ -40,7 +40,6 @@ class App extends React.Component {
     // unregister store
   }
   render() {
-    // return <p>RootRouter</p>;
     // console.log('rendering App with store=', this.store);
     console.log(this.state);
     return <RootRouter store={this.store} />;
